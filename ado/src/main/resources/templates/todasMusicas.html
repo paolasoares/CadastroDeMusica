@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Listagem de músicas</title>
+</head>
+
+<body>
+    <div>
+        <h1>Listagem de Músicas</h1>
+        <div th:if="${musicas.isEmpty()}">
+            <h2>Não há músicas cadastradas</h2>
+        </div>
+        <div th:if = "${!musicas.isEmpty()}">
+            <table >
+                <thead >
+                    <tr class="lista-beneficios" >
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Artista</th>
+                        <th>Ano de lancamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="musica : ${musicas}">
+                        <th scope="row" th:text="${musica.id}"></th>
+                        <td th:text="${musica.titulo}"></td>
+                        <td th:text="${musica.artista}"></td>
+                        <td th:text="${musica.lancamento}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a th:href="@{/musicas/nova}">Incluir novo</a>
+    </div>
+
+</body>
+
+</html>
